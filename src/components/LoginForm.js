@@ -37,6 +37,7 @@ class LoginForm extends Component {
                     <Button>Sign-In</Button>
                 </Section>
             </Container>
+            
         );
     }
 }
