@@ -37,7 +37,7 @@ class LoginForm extends Component {
                     <Button>Sign-In</Button>
                 </Section>
             </Container>
-            
+
         );
     }
 }
@@ -48,6 +48,6 @@ const mapStateToProps = state => ({
     });
 
 export default connect(
-    mapStateToProps, 
+    mapStateToProps, // email and password 
     { emailChanged, passwordChanged }
 )(LoginForm);
