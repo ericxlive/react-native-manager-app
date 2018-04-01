@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import firebase from 'firebase';
 import reducers from './src/reducers';
+import LoginForm from './src/components/LoginForm';
 
-
-export default class App extends Component {
-
-  componentWillMount(){
+class App extends Component {
+  componentWillMount() {
     const config = {
       apiKey: 'AIzaSyDSyqFb7ujjbJy06H-Q4SvR1pQ9nUS7Iis',
       authDomain: 'manager-5906a.firebaseapp.com',
@@ -23,19 +21,10 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={createStore(reducers)}>
-        <View style={styles.container}>
-          <Text>Shake your phone to open the developer menu.</Text>
-        </View>
+        <LoginForm />
       </Provider>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
