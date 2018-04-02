@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import firebase from 'firebase';
+import ReduxThunk from 'redux-thunk'; // This is called a middleware. Then report middlew
 import reducers from './src/reducers';
 import LoginForm from './src/components/LoginForm';
 
@@ -19,8 +20,13 @@ class App extends Component {
   }
 
   render() {
+    /**
+     * The second argument is {}, which is any initial state we want to enter to my reducer. 
+     * Hulk: 1
+     */
+    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
     return (
-      <Provider store={createStore(reducers)}>
+      <Provider store={store}>
         <LoginForm />
       </Provider>
     );
