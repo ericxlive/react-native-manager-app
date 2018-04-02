@@ -24,5 +24,12 @@ export const passwordChanged = (text) => ({
  */
 export const loginUser = ({ email, password }) => (dispatch) => {
         firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(user => dispatch({ type: LOGIN_USER_SUCCESS, payload: user }));
+            .then(user => dispatch({ type: LOGIN_USER_SUCCESS, payload: user })
+            .catch(() => { // Fail.
+                firebase.auth().createUserWithEmailAndPassword(email, password)
+                    .then(user => {
+                        dispatch({ type: LOGIN_USER_SUCCESS, payload: user });
+                    });
+            })
+        );
     }; // This is a E6 returning statement. No need to type return anymore.
