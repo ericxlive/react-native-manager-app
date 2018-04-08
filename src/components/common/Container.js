@@ -9,6 +9,7 @@ const Container = (props) => (
 
 const styles = {
     container: {
+        
         borderWidth: 1, // Size
         borderRadius: 2, // Reounded corners
         borderColor: '#ddd', // Background color

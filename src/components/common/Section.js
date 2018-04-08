@@ -1,8 +1,12 @@
 import React from 'react';
 import { View } from 'react-native';
 
+/**
+ * The very last style passed from outside this component, the second one is going to overwrite
+ * the default style.
+ */
 const Section = (props) => (
-        <View style={styles.section}>
+        <View style={[styles.section, props.style]}> 
             {props.children}
         </View>   
     );
