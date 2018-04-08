@@ -120,3 +120,4 @@ const mapStateToProps = (state) => {
 export default connect( // the secont {} are actions mapped.
     mapStateToProps, { employeeUpdate, employeeCreate } // Args.
 )(EmployeeCreate);
+
