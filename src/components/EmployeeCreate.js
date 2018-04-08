@@ -33,7 +33,9 @@ class EmployeeCreate extends Component {
                             placeholder="+1647325436" 
                             value={this.props.phone} 
                             // EmployeeAction signature pattern {prop, value}
-                            onChangeText={value => this.props.employeeUpdate({ prop: 'name', value })} 
+                            onChangeText={
+                                value => this.props.employeeUpdate({ prop: 'phone', value })
+                            } 
                         />
                     </Section>
                     
