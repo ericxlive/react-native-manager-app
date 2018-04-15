@@ -17,8 +17,9 @@ const RouterComponent = () => (
                     component={EmployeeList} 
                     title="Employees" 
                 />
+                <Scene key="employeeCreate" component={EmployeeCreate} title="New Employee" />
             </Scene>
-            <Scene key="employeeCreate" component={EmployeeCreate} title="New Employee" />
+            
         </Router>
     );
 
