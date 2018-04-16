@@ -2,11 +2,15 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { text } from 'react-native-communications';
-import { Container, Section, Button } from './common';
+import { Container, Section, Button, Confirm } from './common';
 import EmployeeForm from './EmployeeForm';
 import { employeeUpdate, employeeSave } from '../actions';
 
 class EmployeeEdit extends Component {
+
+    state = {
+        showModal: false
+    }
 
     componentWillMount() {
         /*** Interagir em cima de todas propriedades do employee. Percorrer os props e 
@@ -56,6 +60,12 @@ class EmployeeEdit extends Component {
                         Send Schedule
                     </Button>
                 </Section>
+                <Section>
+                    <Button onPress={() => this.setState({ showModal: !this.state.showModal })}>
+                        Fire Employee
+                    </Button>
+                </Section>
+                <Confirm visible={this.state.showModal}>You sure bro?</Confirm>
             </Container>
         );
     }
