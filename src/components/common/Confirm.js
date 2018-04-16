@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, Modal } from 'react-native';
-import { CardSection } from './Section';
+import { Section } from './Section';
 import { Button } from './Button';
 
 const Confirm = ({ children, visible, onAccept, onDecline }) => {
@@ -14,16 +14,16 @@ const Confirm = ({ children, visible, onAccept, onDecline }) => {
       onRequestClose={() => {}}
     >
       <View style={containerStyle}>
-        <CardSection style={cardSectionStyle}>
+        <Section style={cardSectionStyle}>
           <Text style={textStyle}>
             {children}
           </Text>
-        </CardSection>
+        </Section>
 
-        <CardSection>
+        <Section>
           <Button onPress={onAccept}>Yes</Button>
           <Button onPress={onDecline}>No</Button>
-        </CardSection>
+        </Section>
       </View>
     </Modal>
   );
