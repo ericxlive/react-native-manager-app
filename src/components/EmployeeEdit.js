@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { text } from 'react-native-communications';
 import { Container, Section, Button } from './common';
 import EmployeeForm from './EmployeeForm';
 import { employeeUpdate, employeeSave } from '../actions';
@@ -15,6 +16,17 @@ class EmployeeEdit extends Component {
             // We enter an object with the prop and the value associeted with the prop.
             this.props.employeeUpdate({ prop, value });
         });
+    }
+
+    onTextPress() {
+        /**
+         * Get phone and shift from this.props object.
+         */
+        const { phone, shift } = this.props;
+        /**
+         * It could be Communications.text(...)
+         */
+        text(phone, ` Your upcomming shift is on ${shift}`);
     }
 
     onButtonPress() {
@@ -38,6 +50,11 @@ class EmployeeEdit extends Component {
                 <EmployeeForm /> 
                 <Section>
                     <Button onPress={this.onButtonPress.bind(this)}>Update</Button>
+                </Section>
+                <Section>
+                    <Button onPress={this.onTextPress.bind(this)}>
+                        Send Schedule
+                    </Button>
                 </Section>
             </Container>
         );
