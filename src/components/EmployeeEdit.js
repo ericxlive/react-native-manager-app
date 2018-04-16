@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { text } from 'react-native-communications';
 import { Container, Section, Button, Confirm } from './common';
 import EmployeeForm from './EmployeeForm';
-import { employeeUpdate, employeeSave } from '../actions';
+import { employeeUpdate, employeeSave, employeeDelete } from '../actions';
 
 class EmployeeEdit extends Component {
 
@@ -20,6 +20,17 @@ class EmployeeEdit extends Component {
             // We enter an object with the prop and the value associeted with the prop.
             this.props.employeeUpdate({ prop, value });
         });
+    }
+
+    onAccept() {
+        // Initiate the delete.
+        const { uid } = this.props.employee;
+        this.props.employeeDelete({ uid });
+    }
+
+    onDecline() {
+        // Hide the modal.
+        this.setState({ showModal: false });
     }
 
     onTextPress() {
@@ -65,7 +76,13 @@ class EmployeeEdit extends Component {
                         Fire Employee
                     </Button>
                 </Section>
-                <Confirm visible={this.state.showModal}>You sure bro?</Confirm>
+                <Confirm 
+                    visible={this.state.showModal}
+                    onAccept={this.onAccept.bind(this)}
+                    onDecline={this.onDecline.bind(this)}
+                >
+                        You sure bro?
+                </Confirm>
             </Container>
         );
     }
@@ -83,5 +100,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
     mapStateToProps, 
-    { employeeUpdate, employeeSave }
+    { employeeUpdate, employeeSave, employeeDelete }
 )(EmployeeEdit);
