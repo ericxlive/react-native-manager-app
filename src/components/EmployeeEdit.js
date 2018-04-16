@@ -8,9 +8,7 @@ import { employeeUpdate, employeeSave, employeeDelete } from '../actions';
 
 class EmployeeEdit extends Component {
 
-    state = {
-        showModal: false
-    }
+    state = { showModal: false }
 
     componentWillMount() {
         /*** Interagir em cima de todas propriedades do employee. Percorrer os props e 
@@ -20,17 +18,6 @@ class EmployeeEdit extends Component {
             // We enter an object with the prop and the value associeted with the prop.
             this.props.employeeUpdate({ prop, value });
         });
-    }
-
-    onAccept() {
-        // Initiate the delete.
-        const { uid } = this.props.employee;
-        this.props.employeeDelete({ uid });
-    }
-
-    onDecline() {
-        // Hide the modal.
-        this.setState({ showModal: false });
     }
 
     onTextPress() {
@@ -59,6 +46,16 @@ class EmployeeEdit extends Component {
         this.props.employeeSave({ name, phone, shift, uid: this.props.employee.uid });
     }
 
+    onAccept() {
+        // Initiate the delete.
+        const { uid } = this.props.employee;
+        this.props.employeeDelete({ uid });
+    }
+
+    onDecline() {
+        this.setState({ showModal: false });
+    }
+
     render() { 
         return (
             <Container>
@@ -76,12 +73,12 @@ class EmployeeEdit extends Component {
                         Fire Employee
                     </Button>
                 </Section>
-                <Confirm 
+                <Confirm
                     visible={this.state.showModal}
                     onAccept={this.onAccept.bind(this)}
                     onDecline={this.onDecline.bind(this)}
                 >
-                        You sure bro?
+                    Are you sure you want to delete this?
                 </Confirm>
             </Container>
         );
