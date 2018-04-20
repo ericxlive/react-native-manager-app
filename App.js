@@ -6,6 +6,9 @@ import ReduxThunk from 'redux-thunk'; // This is called a middleware. Then repor
 import reducers from './src/reducers';
 import Router from './src/Router';
 
+/**
+ * Default class. Both ios.index.js and android.index.js call this component.
+ */
 class App extends Component {
   componentWillMount() {
     const config = {
@@ -21,9 +24,9 @@ class App extends Component {
 
   render() {
     /**
-     * The second argument is {}, which is any initial state we want to enter to my reducer. 
+     * The second argument is {}, which is any initial state we want to enter to my reducer.
      * Second argument: any reducer state we might want to pass.
-     * 
+     *
      * Hulk: 1
      */
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
